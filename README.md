@@ -7,7 +7,7 @@ This behavior causes the robot, upon initialization, to drive in a quare. I turn
 ### Code explanation: 
 I created a class, DriveInSquare, with two functions; init(), and run(). In my init() function I initialize a rospy node: drive_in_square, a publisher: twist_pub, and a Twist variable: twist, composed of angular and linear velocities. The angular velocity is initialized at 0 and the linear velocity has an inital x value or 0.2. In my run() function I start a while loop that drives the robot in a straight line for 5s at 0.2 linear.x speed, then rotates the robot by setting angular.z velocity to 1 for 1.6 seconds and then sets angluar.z velocity back to zero. Then when the loop runs again, the robot moves in its new direction for 5s and drives in a square after every 4 iterations of the loop.
 ### Gif: 
-![Drive In Square](/home/josephinep/catkin_ws/src/warmup_project/gifs/driveInSquare2.gif)
+![driveInSquare2](/home/josephinep/catkin_ws/src/warmup_project/gifs/driveInSquare2.gif)
 ## **Challenges:** *TBD*
 ## **Future Work:** *TBD*
 ## **Takeaways:** *TBD*
