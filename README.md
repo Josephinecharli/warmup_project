@@ -15,7 +15,7 @@ For this problem I made a robot that searched for an object and moved close to i
 My code is based off the stop at wall file from class. I subscribe to /scan and publish to /cmd_vel in my init function. In my process scan function I check the sensor of the robot and implement the above functionality by altering the angular and linear velocities. Specifically, if the robot senses nothing, I set angular velocity to .3 to turn it until it finds an object. If it finds an object but is too far away, I set angular velocity to 0 so it doesn't spin anymore and set linear velocity to .1. If the robot is the target distance from the object I set both velocities to 0. In my main function I just keep rospy spinning.
 ### Gif: 
 ![person-follower](./gifs/person-follower.gif)
-## Drive in Square:
+## Wall Follower:
 ### Description: 
 This program has a robot search for a wall and then once it finds one, continuously follows the wall. I pull data from multiple points on the robots sensor to detect how close it was to any walls and corners and keep it a consistent distance from them on all sides. I use the front sensor to detect any upcoming corners and I use a sensor on the front right of the robot to detect how far the robot is from the adjacent wall (because my robot moves counter-clockwise).
 ### Code explanation: 
@@ -29,10 +29,12 @@ This program is also based off of stop at wall, so most of the initialization is
 ### Gif: 
 ![wall-follow](./gifs/wall-follow.gif)
 ## **Challenges:**
-
+The main challenges I faced were with programming the behaviors of wall follower. Drive in Square and Person follower came relatively intuitively for me, but I struggled with wall follower a lot until I realized I needed to use multiple sensors on the robot. I was able to easily get my robot to follow the walls by driving into them and then rotating slowly and driving forward again, etc., but couldn't get my robot to not touch the walls. Once I started using the 360 degrees of sensors I was able to track where my robot was much better and control its movement with much more precision. I also ran into an issue with resetting the world, which made me think that my code had broken and I spent a while trying to debug this until I saw the very helpful post on slack (Thanks!!!).
 ## **Future Work:**
-
+For Person Follower I think it would be really cool to implement proportional control to make it look more dynamic and also work faster. I would also like to implement functionality that allows the robot to go searching for objects if it doesnt see any within 3m on any side. For Wall Follower there are a lot of little fixes including making my robot drive smoother, faster, implement turns better, etc, but a major feature I would improve is making it be able to follow walls with doors, holes, etc.
 ## **Takeaways:**
+* Taking a step back and thinking about the problem theoretically helps a lot. Doing this allows me to form a more targeted approach and list the steps out so I have more direction when coding. It also allows me to refine my ideas before coding them and cut out time lost from implementing solutions with fundamental errors.
+* Looking at example code is very helpful so I dont waste a ton of time debugging modules and packages I dont understand. I was very stuck on accessing other degrees of my sensor untill I looked up documentation for the package and example code for how it was used. It ended up being very simple and in hindsight I really should not have struggled as much as I did. In the future I plan to read the documentation before trying to use packages I am unfamiliar with.
 
 
 
