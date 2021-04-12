@@ -71,10 +71,10 @@ class FollowWall(object):
         self.twist_pub.publish(self.twist)
 
         # Print statements to check that the robot stays a consistent distance from the wall
-        print(data.ranges[0])
-        print(data.ranges[90])
-        print(data.ranges[180])
-        print(data.ranges[270])
+        # print(data.ranges[0])
+        # print(data.ranges[90])
+        # print(data.ranges[180])
+        # print(data.ranges[270])
 
     def run(self):
         # Keep the program alive.

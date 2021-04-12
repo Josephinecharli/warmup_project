@@ -32,17 +32,9 @@ class StopAtPerson(object):
         self.twist = Twist(linear=lin,angular=ang)
 
     def process_scan(self, data):
-        # Determine closeness to person by ooking at scan data from in front of
-        #   the robot, set linear velocity based on that information, and
-        #   publish to cmd_vel.
-
-        # The ranges field is a list of 360 number where each number
-        #   corresponds to the distance to the closest obstacle from the
-        #   LiDAR at various angles. Each measurement is 1 degree apart.
-
-        # The first entry in the ranges list corresponds with what's directly
-        #   in front of the robot.
-
+        # Determine how close my robot is to a person is by using its front sensor
+        # If no person is detected, search until I find one
+        # IF we reach the target distance from person, stop
 
         if data.ranges[0] > 3:
             # If person is out of range, turn
