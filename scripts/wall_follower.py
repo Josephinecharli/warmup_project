@@ -44,19 +44,16 @@ class FollowWall(object):
         if data.ranges[0] < .3:
             #If robot is against a wall, backup so it can turn
             self.twist.linear.x = -0.3
-            print("1")
 
         elif data.ranges[0] < .7 or data.ranges[320] < buffer:
             # If the front or side of the robot is very close to a wall, turn slightly
             self.twist.angular.z = .3
             self.twist.linear.x = .1
-            print("2")
 
         elif data.ranges[0] < distance:
             # If we are starting to get close to a wall, turn fast
             self.twist.angular.z = .8
             self.twist.linear.x = .3
-            print("3")
 
         elif data.ranges[0] >= distance:
             # Go forward if not close enough to a wall.
@@ -69,10 +66,6 @@ class FollowWall(object):
                 # If we are still close enough to wall, continue going straight
                 self.twist.linear.x = 0.2
                 self.twist.angular.z = 0
-            print("4Z")
-        else:
-            # Close enough to person, stop.
-            self.twist.linear.x = 0
 
         # Publish msg to cmd_vel.
         self.twist_pub.publish(self.twist)

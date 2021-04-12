@@ -56,6 +56,7 @@ class StopAtPerson(object):
         else:
             # Close enough to person, stop.
             self.twist.linear.x = 0
+            self.twist.angular.z = 0
 
         # Publish msg to cmd_vel.
         self.twist_pub.publish(self.twist)
